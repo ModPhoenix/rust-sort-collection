@@ -2,6 +2,7 @@ use std::fmt::{Debug, Display};
 
 mod bubblesort;
 mod insertionsort;
+mod selectionsort;
 
 pub trait Sorter {
     fn sort<T>(slice: &mut [T])
