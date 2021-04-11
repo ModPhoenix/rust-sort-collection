@@ -1,14 +1,17 @@
+use std::fmt::{Debug, Display};
+
 mod bubblesort;
+mod insertionsort;
 
 pub trait Sorter {
     fn sort<T>(slice: &mut [T])
     where
-        T: Ord;
+        T: Display + Ord + Debug;
 }
 
 pub fn sort<T, S>(slice: &mut [T])
 where
-    T: Ord,
+    T: Display + Ord + Debug,
     S: Sorter,
 {
     S::sort(slice)
