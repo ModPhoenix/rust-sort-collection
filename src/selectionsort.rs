@@ -6,22 +6,20 @@ pub struct SelectionSort;
 
 impl Sorter for SelectionSort {
     fn sort<T: Display + Ord + Debug>(slice: &mut [T]) {
-        let mut min;
-        let mut index: usize = 0;
+        for cursor in 0..slice.len() {
+            let mut min_value_index = cursor;
 
-        for i in 0..slice.len() {
-            min = &slice[i];
-
-            for j in i..slice.len() {
-                if &slice[j] < &min {
-                    min = &slice[j];
-                    index = j;
+            for rest_cursor in cursor..slice.len() {
+                if &slice[rest_cursor] < &slice[min_value_index] {
+                    min_value_index = rest_cursor;
                 }
             }
 
-            if &slice[i] != min {
-                slice.swap(i, index);
+            if &slice[cursor] != &slice[min_value_index] {
+                slice.swap(cursor, min_value_index);
             }
+
+            println!("slice {:?}", slice);
         }
     }
 }
