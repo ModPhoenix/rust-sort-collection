@@ -18,8 +18,6 @@ impl Sorter for SelectionSort {
             if &slice[cursor] != &slice[min_value_index] {
                 slice.swap(cursor, min_value_index);
             }
-
-            println!("slice {:?}", slice);
         }
     }
 }
