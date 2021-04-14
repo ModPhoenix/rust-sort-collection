@@ -1,11 +1,9 @@
-use std::fmt::{Debug, Display};
-
 use super::Sorter;
 
 pub struct SelectionSort;
 
 impl Sorter for SelectionSort {
-    fn sort<T: Display + Ord + Debug>(slice: &mut [T]) {
+    fn sort<T: Ord>(self, slice: &mut [T]) {
         for cursor in 0..slice.len() {
             let mut min_value_index = cursor;
 
@@ -29,7 +27,7 @@ mod tests {
     #[test]
     fn it_works() {
         let mut things = vec![25, 4, 1, 3, 5, 2, 4, 6, 4, 9];
-        SelectionSort::sort(&mut things);
+        SelectionSort.sort(&mut things);
         assert_eq!(things, &[1, 2, 3, 4, 4, 4, 5, 6, 9, 25]);
     }
 }

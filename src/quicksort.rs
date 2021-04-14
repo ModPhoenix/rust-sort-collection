@@ -1,16 +1,14 @@
-use std::fmt::{Debug, Display};
-
 use super::Sorter;
 
 pub struct Quicksort;
 
 impl Sorter for Quicksort {
-    fn sort<T: Display + Ord + Debug>(slice: &mut [T]) {
+    fn sort<T: Ord>(self, slice: &mut [T]) {
         quicksort(slice, 0, slice.len() - 1);
     }
 }
 
-fn quicksort<T: Display + Ord + Debug>(slice: &mut [T], low: usize, high: usize) {
+fn quicksort<T: Ord>(slice: &mut [T], low: usize, high: usize) {
     if low < high {
         let p = partition(slice, low, high);
 
@@ -19,7 +17,7 @@ fn quicksort<T: Display + Ord + Debug>(slice: &mut [T], low: usize, high: usize)
     }
 }
 
-fn partition<T: Display + Ord + Debug>(slice: &mut [T], low: usize, high: usize) -> usize {
+fn partition<T: Ord>(slice: &mut [T], low: usize, high: usize) -> usize {
     let mut i = low;
     let mut j = high;
 
@@ -52,14 +50,14 @@ mod tests {
     #[test]
     fn it_works() {
         let mut things = vec![25, 4, 1, 3, 31, 5, 1, 4, 4, 2, 2, 6, 4, 9, 1];
-        Quicksort::sort(&mut things);
+        Quicksort.sort(&mut things);
         assert_eq!(things, &[1, 1, 1, 2, 2, 3, 4, 4, 4, 4, 5, 6, 9, 25, 31]);
     }
 
     #[test]
     fn sorts_same_items() {
         let mut things = vec![5, 5, 5, 5, 5, 5, 5, 5, 5];
-        Quicksort::sort(&mut things);
+        Quicksort.sort(&mut things);
         assert_eq!(things, &[5, 5, 5, 5, 5, 5, 5, 5, 5]);
     }
 }
