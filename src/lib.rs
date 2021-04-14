@@ -2,6 +2,7 @@ use std::fmt::{Debug, Display};
 
 mod bubblesort;
 mod insertionsort;
+mod quicksort;
 mod selectionsort;
 
 pub trait Sorter {
