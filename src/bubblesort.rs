@@ -4,6 +4,10 @@ pub struct BubbleSort;
 
 impl Sorter for BubbleSort {
     fn sort<T: Ord>(self, slice: &mut [T]) {
+        if slice.len() == 0 {
+            return;
+        }
+
         let mut swapped = true;
         while swapped {
             swapped = false;
